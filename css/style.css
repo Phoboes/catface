@@ -4,6 +4,7 @@
 }
 
  * path {
+   /*stroke: black;*/
   stroke-dasharray: 2324;
   stroke-dashoffset: 2324;
   animation: dash 10s linear forwards;
