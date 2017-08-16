@@ -3,16 +3,42 @@
   margin: auto;
 }
 
+ /** path {
+   fill-opacity: 0;
+   animation: fillIn 10s linear forwards;
+ }*/
+
  * path {
    /*stroke: black;*/
+   fill-opacity: 0;
   stroke-dasharray: 2324;
   stroke-dashoffset: 2324;
-  animation: dash 10s linear forwards;
+  /*animation: dash 10s linear forwards;*/
   /*display: none;*/
 }
 
+.animate {
+  animation: dash 5s linear forwards;
+}
+
 @keyframes dash {
-  to {
+  0% {
+   fill-opacity: 0;
+   stroke-dasharray: 2324;
+   stroke-dashoffset: 2324;
+  }
+  80% {
+    stroke-dashoffset: 1859;
+    fill-opacity: 0;
+  }
+  100% {
     stroke-dashoffset: 0;
+    fill-opacity: 1;
   }
 }
+
+/*@keyframes fillIn {
+  90% {
+    fill-opacity: 1;
+  }
+}*/
