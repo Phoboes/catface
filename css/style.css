@@ -1,6 +1,7 @@
 .container {
   width: 800px;
   margin: auto;
+  background-color: gainsboro;
 }
 
  /** path {
@@ -18,7 +19,7 @@
 }
 
 .animate {
-  animation: dash 5s linear forwards;
+  animation: dash 4s linear forwards;
 }
 
 @keyframes dash {
