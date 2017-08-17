@@ -1,5 +1,17 @@
+.control {
+  margin: auto;
+  width: 600px;
+  border: 1px solid black;
+  text-align: center;
+}
+
+.control button {
+  display: inline-block;
+  margin: 1em;;
+}
+
 .container {
-  width: 800px;
+  width: 600px;
   margin: auto;
   background-color: gainsboro;
 }
@@ -15,10 +27,11 @@
   stroke-dasharray: 2324;
   stroke-dashoffset: 2324;
   /*animation: dash 10s linear forwards;*/
-  /*display: none;*/
+  display: none;
 }
 
 .animate {
+  display: block;
   animation: dash 4s linear forwards;
 }
 
