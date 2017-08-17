@@ -1,10 +1,10 @@
 // document.querySelector('#skull').children
-
+let timer;
 const animate = function( id ){
   let layer = document.querySelector( `#${ id }` ).querySelectorAll('path');
   // debugger
-
-  for( let i = 0; i < layer.length; i++ ){
+  for( let i = layer.length - 1; i >= 0; i-- ){
+  // for( let i = 0; i < layer.length; i++ ){
     // debugger
     window.setTimeout( function(){
       // debugger
@@ -20,6 +20,7 @@ const animate = function( id ){
 };
 
 const clearBoard = function(){
+  clearTimeout( timer );
   const paths = document.querySelectorAll('path');
 
   for (var i = 0; i < paths.length; i++) {
@@ -37,9 +38,14 @@ const setAnim = function(){
   // debugger
   if( this.innerText === 'clear' ){
     clearBoard();
-  } else {
+  }  else {
     // clearBoard();
-    animate( `${ this.innerText }` )
+    animate( `${ this.innerText }` );
+    if( this.innerText !== 'skull' ){
+      timer = window.setTimeout( function(){
+        animate( 'eyes' );
+      }, 900 );
+    }
   }
 };
 
@@ -53,5 +59,4 @@ window.onload = function(){
     buttons[i].addEventListener( 'click', setAnim, false );
   }
 
-  // for( let i = paths.length - 1; i >= 0; i-- ){
 };
