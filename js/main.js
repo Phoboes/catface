@@ -44,6 +44,7 @@ const setAnim = function(){
     if( this.innerText !== 'skull' ){
       timer = window.setTimeout( function(){
         animate( 'eyes' );
+        animate( 'nose' );
       }, 900 );
     }
   }
