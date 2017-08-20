@@ -1,19 +1,35 @@
 // document.querySelector('#skull').children
 let timer;
-const animate = function( id ){
-  let layer = document.querySelector( `#${ id }` ).querySelectorAll('path');
+
+const animateSequencer = function( id ){
+  let layer = document.querySelector( `#${ id }` );
+
+  if( layer.querySelector( "[id^='linework']" ) ){
+    // debugger
+    animate( layer.querySelector( "[id^='linework']" ).querySelectorAll('path') );
+    window.setTimeout( function(){
+      // debugger
+      animate( layer.querySelector( "[id^='tones']" ).querySelectorAll('path') );
+    }, 800 );
+  } else {
+    animate( layer.querySelectorAll('path') );
+  }
+}
+
+const animate = function( paths ){
+  // let layer = id.querySelectorAll('path');
   // debugger
-  for( let i = layer.length - 1; i >= 0; i-- ){
+  for( let i = paths.length - 1; i >= 0; i-- ){
   // for( let i = 0; i < layer.length; i++ ){
     // debugger
     window.setTimeout( function(){
       // debugger
       // debugger
-      layer[i].classList.add('animate');
-      layer[i].style.animationPlayState = 'running';
+      paths[i].classList.add('animate');
+      paths[i].style.animationPlayState = 'running';
       // let length = Math.round( layer[i].getTotalLength() );
       // layer[i].style.strokeDasharray = `${ length }`;
-      layer[i].style.display = "block"
+      paths[i].style.display = "block"
     }, ( i ) );
     // console.log(layer[i])
   }
@@ -38,14 +54,28 @@ const setAnim = function(){
   // debugger
   if( this.innerText === 'clear' ){
     clearBoard();
-  }  else {
+  } else if ( this.innerText === "all" ) {
+    animateSequencer( 'skull' );
+    timer = window.setTimeout( function(){
+      animateSequencer( 'flesh' );
+      timer = window.setTimeout( function(){
+        animateSequencer( 'eyes' );
+        animateSequencer( 'nose' );
+      }, 900 );
+    }, 5000 );
+
+    timer = window.setTimeout( function(){
+      animateSequencer( 'skin' );
+    }, 10000 );
+
+  } else {
     // clearBoard();
-    animate( `${ this.innerText }` );
+    animateSequencer( `${ this.innerText }` );
     if( this.innerText !== 'skull' ){
       timer = window.setTimeout( function(){
-        animate( 'eyes' );
-        animate( 'nose' );
-      }, 900 );
+        animateSequencer( 'eyes' );
+        animateSequencer( 'nose' );
+      }, 1200 );
     }
   }
 };
