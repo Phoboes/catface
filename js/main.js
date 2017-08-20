@@ -1,14 +1,11 @@
-// document.querySelector('#skull').children
 let timer;
 
 const animateSequencer = function( id ){
   let layer = document.querySelector( `#${ id }` );
-
+  // Fuzzy selector due to illustrator name clashes on IDs. IE, #linework might be #linework_2_.
   if( layer.querySelector( "[id^='linework']" ) ){
-    // debugger
     animate( layer.querySelector( "[id^='linework']" ).querySelectorAll('path') );
     window.setTimeout( function(){
-      // debugger
       animate( layer.querySelector( "[id^='tones']" ).querySelectorAll('path') );
     }, 800 );
   } else {
@@ -17,21 +14,12 @@ const animateSequencer = function( id ){
 }
 
 const animate = function( paths ){
-  // let layer = id.querySelectorAll('path');
-  // debugger
   for( let i = paths.length - 1; i >= 0; i-- ){
-  // for( let i = 0; i < layer.length; i++ ){
-    // debugger
     window.setTimeout( function(){
-      // debugger
-      // debugger
       paths[i].classList.add('animate');
       paths[i].style.animationPlayState = 'running';
-      // let length = Math.round( layer[i].getTotalLength() );
-      // layer[i].style.strokeDasharray = `${ length }`;
       paths[i].style.display = "block"
     }, ( i ) );
-    // console.log(layer[i])
   }
 };
 
@@ -40,7 +28,6 @@ const clearBoard = function(){
   const paths = document.querySelectorAll('path');
 
   for (var i = 0; i < paths.length; i++) {
-    // debugger
     paths[i].classList.remove('animate');
     paths[i].style.animationPlayState = 'paused';
     paths[i].style.display = "none";
@@ -51,7 +38,6 @@ const clearBoard = function(){
 };
 
 const setAnim = function(){
-  // debugger
   if( this.innerText === 'clear' ){
     clearBoard();
   } else if ( this.innerText === "all" ) {
@@ -61,7 +47,7 @@ const setAnim = function(){
       timer = window.setTimeout( function(){
         animateSequencer( 'eyes' );
         animateSequencer( 'nose' );
-      }, 900 );
+      }, 1200 );
     }, 5000 );
 
     timer = window.setTimeout( function(){
@@ -69,7 +55,6 @@ const setAnim = function(){
     }, 10000 );
 
   } else {
-    // clearBoard();
     animateSequencer( `${ this.innerText }` );
     if( this.innerText !== 'skull' ){
       timer = window.setTimeout( function(){
@@ -81,10 +66,8 @@ const setAnim = function(){
 };
 
 window.onload = function(){
-  // console.log("Loaded.")
   const paths = document.querySelector('#skull').querySelectorAll('path');
   const buttons = document.querySelectorAll('button');
-  // animate( paths );
 
   for (var i = 0; i < buttons.length; i++) {
     buttons[i].addEventListener( 'click', setAnim, false );
