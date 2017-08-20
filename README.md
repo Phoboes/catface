@@ -7,4 +7,4 @@ Whole => Muscular => Skeletal.
 
 Thus catFace was born.
 
-![catface](https://media.giphy.com/media/3ohk2Gfx7fUJh3LiN2/giphy.gif)
+![catface](http://i.imgur.com/P9wTs8x.gifv)
