@@ -38,9 +38,10 @@ const clearBoard = function(){
 };
 
 const setAnim = function(){
-  if( this.innerText === 'clear' ){
+  var innerText = this.innerText.toLowerCase();
+  if( innerText === 'clear' ){
     clearBoard();
-  } else if ( this.innerText === "all" ) {
+  } else if ( innerText === "all" ) {
     animateSequencer( 'skull' );
     timer = window.setTimeout( function(){
       animateSequencer( 'flesh' );
@@ -55,8 +56,8 @@ const setAnim = function(){
     }, 10000 );
 
   } else {
-    animateSequencer( `${ this.innerText }` );
-    if( this.innerText !== 'skull' ){
+    animateSequencer( `${ innerText }` );
+    if( innerText !== 'skull' ){
       timer = window.setTimeout( function(){
         animateSequencer( 'eyes' );
         animateSequencer( 'nose' );

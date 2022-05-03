@@ -1,14 +1,36 @@
+body {
+  background-color: #64646433;
+}
+
 .control {
   margin: auto;
   width: 600px;
-  border: 1px solid black;
   text-align: center;
+}
+
+.control, .container {
+  border: 1px solid rgba(50,50,50,0.1);
 }
 
 .control button {
   display: inline-block;
-  margin: 1em;;
+  margin: 1em;
+  padding: 0.7em;
+  border-radius: 0.8em;
+  background-color: rgba(20, 110, 200, 0.4);
+  color: rgba(255,255,255,0.9);
+  font-weight: bold;
+  border-color: rgba(193, 210, 255, 0.9);
+
 }
+
+.control button:hover,
+.control button:active,
+.control button:focus { 
+  cursor: pointer;
+  background-color: rgba(20, 110, 200, 0.665);
+}
+
 
 .container {
   width: 600px;
