@@ -38,7 +38,7 @@ const clearBoard = function(){
 };
 
 const setAnim = function(){
-  var innerText = this.innerText.toLowerCase();
+  const innerText = this.innerText.toLowerCase();
   if( innerText === 'clear' ){
     clearBoard();
   } else if ( innerText === "all" ) {
